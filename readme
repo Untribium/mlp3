@@ -7,7 +7,7 @@ normalize data (mean=0, std=1),-,-
 
 
 Features
-split (7),histogram (40),-
+split(7), histogram(40),-
 
 
 Model
