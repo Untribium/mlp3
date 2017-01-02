@@ -19,4 +19,5 @@ First we normalize all the data, then split the brain 7 times along all three di
 To classify, we use sklearn's RandomForestClassifier tuned by exhaustive grid search with 
 crossval on 17 bins.
 We use Matlab for feature extraction/selection (run processing.m) to reuse code from MLP1
-and Python for classification (tuning.py, then predict_final.py)
+and Python for classification (tuning.py, then predict_final.py). The python code uses 
+the generated feature files in src/features, so no need to run the matlab code.
