@@ -7,18 +7,16 @@ normalize data (mean=0, std=1),-,-
 
 
 Features
-split (17),histogram (20),select (see desc)
+split (7),histogram (40),-
 
 
 Model
-classification,RandomForestClassifier,GridSearchCV
+multi-output classification,RandomForestClassifier,GridSearchCV
 
 
 Description
-First we normalize all the data, then split the brain 17 times along all three dimensions.
-The feature selection process compares the distance between the means of both classes to
-the sum of the standard deviations, therefore prefering features that separate the data.
-To classify, we use sklearn's RandomForestClassifier tuned by exhaustive grid search
-with crossval on 17 bins.
+First we normalize all the data, then split the brain 7 times along all three dimensions.
+To classify, we use sklearn's RandomForestClassifier tuned by exhaustive grid search with 
+crossval on 17 bins.
 We use Matlab for feature extraction/selection (run processing.m) to reuse code from MLP1
 and Python for classification (tuning.py, then predict_final.py)
