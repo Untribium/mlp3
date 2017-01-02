@@ -1,18 +1,11 @@
 import numpy as np
 import scipy.io as sio
 import warnings
-import operator
 
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.multioutput import MultiOutputClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import hamming_loss, make_scorer
-from sklearn.pipeline import Pipeline
 from sklearn import metrics
-
-# testing
-from sklearn.feature_selection import SelectKBest
 
 # deprecation warnings
 warnings.simplefilter("ignore")
@@ -31,20 +24,18 @@ def main():
     Y = sio.loadmat(path+'Y.mat')['Y']
 
     print('feature set', ':', features)
-    print('X_train', ':', X_train.shape)
-    print('Y', ':', Y.shape)
 
     # == RandomForest ==
     rfc = RandomForestClassifier()
 
     params = ({
-        'n_estimators'      : [250],
-        'max_features'      : [500],
+        'n_estimators'      : [350],
+        'max_features'      : [350],
         'class_weight'      : ['balanced'],
-        'max_depth'         : [3,5,7],
-        'min_samples_split' : [3,6,9],
-        'min_samples_leaf'  : [2,3,4],
-        'random_state'      : range(0,3),
+        'max_depth'         : [5],
+        'min_samples_split' : [10],
+        'min_samples_leaf'  : [2],
+        'random_state'      : range(0,1),
     })
 
     gcv = GridSearchCV(estimator = rfc, param_grid = params, scoring=make_scorer(neg_hamming_loss), n_jobs=-1, iid=False, cv=17)
